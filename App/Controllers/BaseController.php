@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
+use Symfony\Component\HttpFoundation\Request;
+
 /*
  * The class that all controllers should extends
  */
-
-use Symfony\Component\HttpFoundation\Request;
 
 abstract class BaseController
 {
