@@ -1,6 +1,6 @@
 <?php
 
-namespace DVD\View;
+namespace System\View;
 
 class View
 {
@@ -31,13 +31,11 @@ class View
      *
      * @param $name
      * @param array $data
-     * @return void
+     * @return View
      */
     public static function create($name, array $data)
     {
-        $view = new View($name, $data);
-
-        $view->render();
+        return new View($name, $data);
     }
 
     /**
@@ -56,6 +54,11 @@ class View
 
         extract($this->data, EXTR_OVERWRITE);
 
+        ob_start();
         require $view;
+        $contents = ob_get_contents();
+        ob_flush();
+
+        return $contents;
     }
 }

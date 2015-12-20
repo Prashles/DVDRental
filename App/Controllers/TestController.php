@@ -2,12 +2,15 @@
 
 namespace App\Controllers;
 
-use DVD\View\View;
+use System\Response\Response;
+use System\View\View;
 
 class TestController extends BaseController
 {
     public function test()
     {
-        return View::create('test.test', ['test' => 'Prash is a beast']);
+        return $this->response->view(
+            View::create('test.test', ['test' => 'aslsdkf'])
+        );
     }
 }
