@@ -6,7 +6,7 @@ use PDO;
 use PDOStatement;
 use System\Database\Database;
 
-abstract class BaseModel
+abstract class BaseModel implements ModelInterface
 {
     /**
      * @var \PDO
@@ -47,6 +47,34 @@ abstract class BaseModel
     public function all()
     {
         return self::fetchAll($this->db->query('SELECT * FROM ' . $this->getTable()));
+    }
+
+    /**
+     * Return a record by its ID
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function getById($id)
+    {
+        return self::fetch(
+            $this->query('SELECT * FROM ' . $this->getTable() . ' WHERE id = ?', [$id])
+        );
+    }
+
+    /**
+     * Shorter syntax for prepare()/execute() queries
+     *
+     * @param string $query
+     * @param array $params
+     * @return PDOStatement
+     */
+    public function query($query, array $params)
+    {
+        $stmt = $this->db->prepare($query);
+        $stmt->execute($params);
+
+        return $stmt;
     }
 
     /**
