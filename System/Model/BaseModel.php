@@ -2,6 +2,8 @@
 
 namespace System\Model;
 
+use PDO;
+use PDOStatement;
 use System\Database\Database;
 
 abstract class BaseModel
@@ -44,7 +46,25 @@ abstract class BaseModel
      */
     public function all()
     {
-        $get = $this->db->prepare('SELECT * FROM ?');
-        return $get->execute([$this->getTable()]);
+        return self::fetchAll($this->db->query('SELECT * FROM ' . $this->getTable()));
     }
+
+    /**
+     * @param PDOStatement $query
+     * @return mixed
+     */
+    protected static function fetch(PDOStatement $query)
+    {
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
+
+    /**
+     * @param PDOStatement $query
+     * @return array
+     */
+    protected static function fetchAll(PDOStatement $query)
+    {
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
 }
