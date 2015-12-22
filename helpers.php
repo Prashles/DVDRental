@@ -33,3 +33,14 @@ function view($name)
 
     return $view;
 }
+
+/**
+ * Return path to an asset
+ *
+ * @param $asset
+ * @return string
+ */
+function asset($asset)
+{
+    return 'assets/' . $asset;
+}

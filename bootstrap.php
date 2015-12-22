@@ -9,7 +9,6 @@ use \FastRoute\RouteCollector;
 /*
  * Define application paths
  */
-
 define('BASE_PATH', __DIR__ . '/');
 define('APP_PATH', BASE_PATH . 'App/');
 define('PUBLIC_PATH', BASE_PATH . 'public/');
