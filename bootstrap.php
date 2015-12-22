@@ -3,6 +3,7 @@
 use FastRoute\Dispatcher;
 use function FastRoute\simpleDispatcher;
 use Symfony\Component\HttpFoundation\Request;
+use \FastRoute\RouteCollector;
 
 /*
  * Define application paths
@@ -34,7 +35,7 @@ $request = Request::createFromGlobals();
  */
 
 // Define the routes
-$defineRoutes = function (\FastRoute\RouteCollector $r) {
+$defineRoutes = function (RouteCollector $r) {
     $routes = require APP_PATH . 'routes.php';
     foreach ($routes as $route) {
         $r->addRoute($route[0], $route[1], $route[2]);
