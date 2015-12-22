@@ -1,5 +1,6 @@
 <?php
 
+use Dotenv\Dotenv;
 use FastRoute\Dispatcher;
 use function FastRoute\simpleDispatcher;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +22,7 @@ require_once BASE_PATH . 'vendor/autoload.php';
 /*
  * Environment variables
  */
-$dotenv = new Dotenv\Dotenv(BASE_PATH);
+$dotenv = new Dotenv(BASE_PATH);
 $dotenv->load();
 
 
