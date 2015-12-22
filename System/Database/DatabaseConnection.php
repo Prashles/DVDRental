@@ -41,10 +41,10 @@ class DatabaseConnection
      */
     public function __construct($host, $username, $password, $databaseName)
     {
-        $this->host = getenv('DB_HOST');
-        $this->username = getenv('DB_USERNAME');
-        $this->password = getenv('DB_PASSWORD');
-        $this->databaseName = getenv('DB_NAME');
+        $this->host = $host;
+        $this->username = $username;
+        $this->password = $password;
+        $this->databaseName = $databaseName;
     }
 
     /**
