@@ -15,7 +15,7 @@ class Response extends \Symfony\Component\HttpFoundation\Response
      */
     public function view(View $view)
     {
-        $response = new Response();
+        $response = new Response;
         $response->create($view->render(), 200);
 
         return $response->send();

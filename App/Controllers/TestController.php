@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use System\Response\Response;
 use System\View\View;
 
 class TestController extends BaseController

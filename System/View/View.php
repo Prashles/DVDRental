@@ -55,8 +55,10 @@ class View
         extract($this->data, EXTR_OVERWRITE);
 
         ob_start();
+
         require $view;
         $contents = ob_get_contents();
+
         ob_flush();
 
         return $contents;
