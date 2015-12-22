@@ -12,11 +12,6 @@ use \PDO;
 class DatabaseConnection
 {
     /**
-     * @var PDO The PDO instance
-     */
-    protected $db;
-
-    /**
      * @var string
      */
     protected $host;
@@ -44,14 +39,12 @@ class DatabaseConnection
      * @param string $password
      * @param string $databaseName
      */
-    public function __construct($host = null, $username = null, $password = null, $databaseName = null)
+    public function __construct($host, $username, $password, $databaseName)
     {
-        $this->host = ($host !== null) ? $host : getenv('DB_HOST');
-        $this->username = ($username !== null) ? $username : getenv('DB_USERNAME');
-        $this->password = ($password !== null) ? $password : getenv('DB_PASSWORD');
-        $this->databaseName = ($databaseName !== null) ? $databaseName : getenv('DB_NAME');
-
-        $this->db = $this->connect();
+        $this->host = getenv('DB_HOST');
+        $this->username = getenv('DB_USERNAME');
+        $this->password = getenv('DB_PASSWORD');
+        $this->databaseName = getenv('DB_NAME');
     }
 
     /**
@@ -69,13 +62,5 @@ class DatabaseConnection
         } catch (\PDOException $e) {
             throw new \Exception('Could not connect to database: ' . $e->getMessage());
         }
-    }
-
-    /**
-     * @return PDO
-     */
-    public function getConnection()
-    {
-        return $this->db;
     }
 }
