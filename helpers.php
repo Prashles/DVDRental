@@ -15,23 +15,15 @@ function e($string)
     return htmlspecialchars($string);
 }
 
-/**
- * Return path to view from dot notation name
- *
- * @param $name
- * @return string
- * @throws Exception
- */
-function view($name)
+function view($view)
 {
-    $path = str_replace('.', '/', $name);
-    $view = APP_PATH . 'Views/' . $path . '.view.php';
+    $path = \System\View\View::path($view);
 
-    if (!file_exists($view)) {
-        throw new \Exception('View: ' . $name . ' does not exist');
+    if (!file_exists($path)) {
+        throw new Exception('View: ' . $view . ' does not exist');
     }
 
-    return $view;
+    return $path;
 }
 
 /**

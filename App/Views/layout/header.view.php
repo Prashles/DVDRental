@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Sticky Footer Navbar Template for Bootstrap</title>
+      <title><?php echo e($title . ' - ' . getenv('SITE_TITLE')); ?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo asset('css/bootstrap.min.css'); ?>" rel="stylesheet">

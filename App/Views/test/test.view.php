@@ -1,4 +1,4 @@
-<?php require view('layout.header'); ?>
+<?php view('layout.header', ['title' => $title]); ?>
 
 <!-- Begin page content -->
 <div class="container">
@@ -9,4 +9,4 @@
     <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p>
 </div>
 
-<?php require view('layout.footer'); ?>
+<?php view('layout.footer'); ?>

@@ -33,7 +33,7 @@ class View
      * @param array $data
      * @return View
      */
-    public static function create($name, array $data)
+    public static function create($name, array $data = [])
     {
         return new View($name, $data);
     }
@@ -46,7 +46,7 @@ class View
      */
     public function render()
     {
-        $view = APP_PATH . 'Views/' . $this->name . '.view.php';
+        $view = self::path($this->name);
 
         if (!file_exists($view)) {
             throw new \Exception('View: ' . $this->name . ' does not exist');
@@ -56,11 +56,23 @@ class View
 
         ob_start();
 
-        require $view;
+        include $view;
         $contents = ob_get_contents();
 
         ob_flush();
 
         return $contents;
     }
+
+    /**
+     * Path to view from name
+     *
+     * @param $view
+     * @return string
+     */
+    public static function path($view)
+    {
+        return APP_PATH . 'Views/' . str_replace('.', '/', $view) . '.view.php';
+    }
+
 }

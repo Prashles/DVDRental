@@ -10,7 +10,7 @@ class TestController extends BaseController
     public function test()
     {
         return $this->response->view(
-            View::create('test.test', ['user' => (new User)->getById(1)])
+            View::create('test.test', ['title' => 'Test Page'])
         );
     }
 }
