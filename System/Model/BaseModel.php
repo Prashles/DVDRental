@@ -95,4 +95,15 @@ abstract class BaseModel implements ModelInterface
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
+    /**
+     * Run validation against $this->rules
+     *
+     * @param array $data
+     * @return mixed
+     */
+    public static function validate(array $data)
+    {
+        // TODO: Implement validate() method.
+    }
+
 }
