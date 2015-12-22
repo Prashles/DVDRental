@@ -5,7 +5,7 @@ namespace App\Models;
 use System\Model\BaseModel;
 use System\Model\ModelInterface;
 
-class User extends BaseModel implements ModelInterface
+class User extends BaseModel
 {
     /**
      * @var string Table in DB

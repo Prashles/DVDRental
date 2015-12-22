@@ -1,2 +1,3 @@
-ID: <?php echo $user->id; ?> <br/>
-Name: <?php echo $user->name; ?>
+<?php require view('layout.header'); ?>
+
+<?php require view('layout.footer'); ?>
