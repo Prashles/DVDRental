@@ -2,7 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Models\User;
 use Symfony\Component\HttpFoundation\Request;
+use System\Auth\Auth;
 use System\Response\Response;
 
 /*

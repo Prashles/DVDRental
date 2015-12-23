@@ -8,5 +8,10 @@ namespace System\Auth;
  */
 interface Authenticatable
 {
-
+    /**
+     * Column that holds the username
+     *
+     * @return string
+     */
+    public function getUsername();
 }

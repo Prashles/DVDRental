@@ -2,6 +2,8 @@
 
 namespace System\Auth;
 
+use System\Model\Model;
+
 class Auth
 {
     /**
@@ -45,5 +47,18 @@ class Auth
     public static function is()
     {
 
+    }
+
+    /**
+     * Check if username exists
+     *
+     * @param $username
+     * @return bool
+     */
+    public function checkUsername($username)
+    {
+        return $this->model->query('SELECT id FROM ' . $this->model->getTable() .
+            ' WHERE ' . $this->model->getUsername() . ' = ?', [$username])
+            ->rowCount() === 0;
     }
 }

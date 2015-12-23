@@ -5,6 +5,7 @@ namespace System\Model;
 use PDO;
 use PDOStatement;
 use System\Database\Database;
+use Valitron\Validator;
 
 abstract class BaseModel implements Model
 {
@@ -17,6 +18,11 @@ abstract class BaseModel implements Model
      * @var string Name of the table
      */
     protected $table;
+
+    /**
+     * @var array Validation rules for the model
+     */
+    protected static $rules;
 
     public function __construct()
     {
@@ -99,11 +105,20 @@ abstract class BaseModel implements Model
      * Run validation against $this->rules
      *
      * @param array $data
+     * @param array $rules
      * @return mixed
      */
     public static function validate(array $data)
     {
-        // TODO: Implement validate() method.
+        $validator = new Validator($data);
+        $validator->rules(static::$rules);
+
+        if ($validator->validate()) {
+            return true;
+        }
+        else {
+            return $validator->errors();
+        }
     }
 
 }
