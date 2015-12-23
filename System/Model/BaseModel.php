@@ -6,7 +6,7 @@ use PDO;
 use PDOStatement;
 use System\Database\Database;
 
-abstract class BaseModel implements ModelInterface
+abstract class BaseModel implements Model
 {
     /**
      * @var \PDO

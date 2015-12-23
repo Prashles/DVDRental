@@ -15,6 +15,13 @@ function e($string)
     return htmlspecialchars($string);
 }
 
+/**
+ * Helper to include sub-view in view
+ *
+ * @param $view
+ * @return string
+ * @throws Exception
+ */
 function view($view)
 {
     $path = \System\View\View::path($view);

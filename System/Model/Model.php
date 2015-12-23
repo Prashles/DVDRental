@@ -2,7 +2,7 @@
 
 namespace System\Model;
 
-interface ModelInterface
+interface Model
 {
     /**
      * Every model should be responsible for validating

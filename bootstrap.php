@@ -65,7 +65,7 @@ elseif ($routeInfo[0] == Dispatcher::FOUND) {
 
     if (!is_callable([$className, $method])) {
         // 404, log error
-        die('Class not found');
+        die('Class/method not found: ' . $className . '#' . $method);
     }
     else {
         $controller = new $className;
