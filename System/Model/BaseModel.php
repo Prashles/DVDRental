@@ -5,6 +5,7 @@ namespace System\Model;
 use PDO;
 use PDOStatement;
 use System\Database\Database;
+use System\Message\Message;
 use Valitron\Validator;
 
 abstract class BaseModel implements Model
@@ -117,7 +118,7 @@ abstract class BaseModel implements Model
             return true;
         }
         else {
-            return $validator->errors();
+            return new Message($validator->errors());
         }
     }
 

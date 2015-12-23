@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use System\Auth\Authenticatable;
+use System\Message\Message;
 use System\Model\BaseModel;
 
 class User extends BaseModel implements Authenticatable
@@ -30,7 +31,7 @@ class User extends BaseModel implements Authenticatable
 
     /**
      * @param array $data
-     * @return mixed
+     * @return Message|bool
      */
     public static function validate(array $data)
     {
@@ -42,8 +43,10 @@ class User extends BaseModel implements Authenticatable
 
         // Check if email exists
         if (auth()->checkUsername($data['email']) === false) {
-
+            return new Message(['That email address is already in use']);
         }
+
+        return true;
     }
 
     /**
