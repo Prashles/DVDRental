@@ -22,9 +22,9 @@ class Auth
      * @param $userID
      * @return void
      */
-    public static function login($userID)
+    public function login($userID)
     {
-
+        session()->set('_auth_user_id', $userID);
     }
 
     /**
@@ -44,9 +44,9 @@ class Auth
      *
      * @return bool
      */
-    public static function is()
+    public function is()
     {
-
+        return session()->has('_auth_user_id');
     }
 
     /**
@@ -60,5 +60,27 @@ class Auth
         return $this->model->query('SELECT id FROM ' . $this->model->getTable() .
             ' WHERE ' . $this->model->getUsername() . ' = ?', [$username])
             ->rowCount() === 0;
+    }
+
+    /**
+     * Return the authenticated user
+     *
+     * @return Object|null
+     */
+    public function user()
+    {
+        if (!$this->is()) {
+            return null;
+        }
+
+        return $this->model->getById(session()->get('_auth_user_id'));
+    }
+
+    /**
+     * @return void
+     */
+    public function logout()
+    {
+        session()->remove('_auth_user_id');
     }
 }

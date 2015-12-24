@@ -11,5 +11,6 @@ return [
     ['GET', '/login', ['App\Controllers\User\LoginController', 'getLogin']],
     ['POST', '/login', ['App\Controllers\User\LoginController', 'postLogin']],
     ['GET', '/register', ['App\Controllers\User\LoginController', 'getRegister']],
-    ['POST', '/register', ['App\Controllers\User\LoginController', 'postRegister']]
+    ['POST', '/register', ['App\Controllers\User\LoginController', 'postRegister']],
+    ['GET', '/logout', ['App\Controllers\User\LoginController', 'getLogout']]
 ];

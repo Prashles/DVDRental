@@ -118,7 +118,7 @@ abstract class BaseModel implements Model
         $this->query('INSERT INTO ' . $this->getTable() . ' (' . $cols . ') VALUES (' .
             $valArgs . ')', array_values($data));
 
-        return $this->db->lastInsertId();
+        return (int) $this->db->lastInsertId();
     }
 
     /**

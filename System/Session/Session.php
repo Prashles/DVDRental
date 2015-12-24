@@ -59,4 +59,30 @@ class Session extends \Symfony\Component\HttpFoundation\Session\Session
 
         return empty($input) ? '' : $input[0][$key];
     }
+
+    /**
+     * @return bool
+     */
+    public function hasSuccess()
+    {
+        return $this->getFlashBag()->has('_success');
+    }
+
+    /**
+     * @param $message string
+     * @return void
+     */
+    public function addSuccess($message)
+    {
+        $this->getFlashBag()->add('_success', $message);
+    }
+
+    /**
+     * @return array
+     */
+    public function success()
+    {
+        return current($this->getFlashBag()->get('_success'));
+    }
+
 }
