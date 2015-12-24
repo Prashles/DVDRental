@@ -16,7 +16,7 @@
 
                 <div class="form-group">
                     <label for="email">E-mail Address:</label>
-                    <input type="email" name="email" class="form-control" placeholder="john.doe@example.com">
+                    <input type="email" <?php oldInput('email'); ?> name="email" class="form-control" placeholder="john.doe@example.com">
                 </div>
 
                 <div class="form-group">
@@ -31,7 +31,7 @@
 
                 <div class="form-group">
                     <label for="phone">Phone Number:</label>
-                    <input type="text" name="phone" class="form-control" placeholder="07123456789">
+                    <input type="text" <?php oldInput('phone'); ?> name="phone" class="form-control" placeholder="07123456789">
                 </div>
 
                 <div class="form-group">

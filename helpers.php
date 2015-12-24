@@ -82,7 +82,7 @@ function auth()
 }
 
 /**
- * @return \System\Session
+ * @return \System\Session\Session
  */
 function session()
 {
@@ -96,4 +96,20 @@ function session()
 function redirect($to)
 {
     return (new RedirectResponse($to))->send();
+}
+
+/**
+ * Helper function for old input data.
+ * ONLY USEFUL FOR INPUT FIELDS WITH VALUE PARAM
+ *
+ * @param $key
+ * @return void
+ */
+function oldInput($key)
+{
+    $value = session()->oldInput($key);
+
+    if (is_string($value)) {
+        echo "value=\"{$value}\"";
+    }
 }

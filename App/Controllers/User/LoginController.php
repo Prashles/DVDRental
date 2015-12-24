@@ -34,6 +34,7 @@ class LoginController extends BaseController
         // Validate the data
         if (($validator = User::validate($input)) !== true) {
             session()->addErrors($validator);
+            session()->flashInput($input);
             redirect(l('register'));
         }
 
