@@ -4,7 +4,8 @@ use Dotenv\Dotenv;
 use FastRoute\Dispatcher;
 use function FastRoute\simpleDispatcher;
 use Symfony\Component\HttpFoundation\Request;
-use \FastRoute\RouteCollector;
+use FastRoute\RouteCollector;
+use System\Session\Session;
 
 /*
  * Define application paths
@@ -72,3 +73,8 @@ elseif ($routeInfo[0] == Dispatcher::FOUND) {
         $controller->$method($vars);
     }
 }
+
+/*
+ * Start the Symfony session
+ */
+session()->start();

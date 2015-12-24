@@ -4,7 +4,9 @@
  * A series of helper functions
  */
 use App\Models\User;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use System\Auth\Auth;
+use System\Session\SessionSingleton;
 
 /**
  * Return an escaped string for output
@@ -77,4 +79,21 @@ function l($to)
 function auth()
 {
     return new Auth(new User);
+}
+
+/**
+ * @return \System\Session
+ */
+function session()
+{
+    return SessionSingleton::getInstance();
+}
+
+/**
+ * @param $to string
+ * @return RedirectResponse
+ */
+function redirect($to)
+{
+    return (new RedirectResponse($to))->send();
 }

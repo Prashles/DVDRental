@@ -15,7 +15,8 @@ class Message
     public function __construct(array $messages)
     {
         // Flatten messages and add to array
-        $this->messages = call_user_func_array('array_merge', $messages);
+        $this->messages = (is_array(current($messages))) ? call_user_func_array('array_merge', $messages)
+            : $messages;
     }
 
     /**

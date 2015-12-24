@@ -103,10 +103,28 @@ abstract class BaseModel implements Model
     }
 
     /**
+     * Mass assignment
+     *
+     * @param array $data
+     * @return int
+     */
+    public function create(array $data)
+    {
+        $cols = implode('`, `', array_keys($data));
+        $cols = '`' . $cols . '`';
+
+        $valArgs = implode(', ', array_fill(0, count($data), '?'));
+
+        $this->query('INSERT INTO ' . $this->getTable() . ' (' . $cols . ') VALUES (' .
+            $valArgs . ')', array_values($data));
+
+        return $this->db->lastInsertId();
+    }
+
+    /**
      * Run validation against $this->rules
      *
      * @param array $data
-     * @param array $rules
      * @return mixed
      */
     public static function validate(array $data)

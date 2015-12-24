@@ -7,6 +7,13 @@
         <div class="col-md-6">
             <p class="lead">Use the form below to register. If you already have an account, <a href="">click here</a> to login.</p>
             <form action="<?php echo l('register'); ?>" method="POST">
+
+                <?php if(session()->hasErrors()): ?>
+                    <div class="alert alert-danger">
+                        <p><?php echo session()->getErrors()->first(); ?></p>
+                    </div>
+                <?php endif; ?>
+
                 <div class="form-group">
                     <label for="email">E-mail Address:</label>
                     <input type="email" name="email" class="form-control" placeholder="john.doe@example.com">

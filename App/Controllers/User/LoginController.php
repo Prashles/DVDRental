@@ -29,13 +29,21 @@ class LoginController extends BaseController
 
     public function postRegister()
     {
+        $input = $this->request->request->all();
+
         // Validate the data
-        if (($validator = User::validate($this->request->request->all())) !== true) {
-            d($validator);
+        if (($validator = User::validate($input)) !== true) {
+            session()->addErrors($validator);
+            redirect(l('register'));
         }
-        else {
-            echo 'nice one';
-        }
+
+        // Create the user
+        $user = new User;
+        $user->create([
+            'email' => $input['email'],
+            'password' => password_hash($input['password'], PASSWORD_DEFAULT),
+            'phone' => $input['phone']
+        ]);
     }
 
 }
