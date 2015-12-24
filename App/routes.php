@@ -12,5 +12,8 @@ return [
     ['POST', '/login', ['App\Controllers\User\LoginController', 'postLogin']],
     ['GET', '/register', ['App\Controllers\User\LoginController', 'getRegister']],
     ['POST', '/register', ['App\Controllers\User\LoginController', 'postRegister']],
-    ['GET', '/logout', ['App\Controllers\User\LoginController', 'getLogout']]
+    ['GET', '/logout', ['App\Controllers\User\LoginController', 'getLogout']],
+
+    // Browse routes
+    ['GET', '/browse', ['App\Controllers\User\BrowseController', 'getBrowse']],
 ];

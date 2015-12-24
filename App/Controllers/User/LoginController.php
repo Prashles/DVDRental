@@ -18,7 +18,18 @@ class LoginController extends BaseController
 
     public function postLogin()
     {
+        $input = $this->request->request->all();
 
+        // Check login
+        if (!($id = auth()->check($input['email'], $input['password']))) {
+            session()->flashInput($input);
+            session()->addErrors(new Message(['Invalid username/password combination']));
+            return redirect(l('login'));
+        }
+
+        // Login successful
+        auth()->login($id);
+        return redirect(l('browse'));
     }
 
     public function getRegister()
@@ -58,7 +69,7 @@ class LoginController extends BaseController
 
         // Flash success message, take the user to the browse page
         session()->addSuccess('You have successfully been registered!');
-        return redirect(l('/'));
+        return redirect(l('browse'));
     }
 
     public function getLogout()

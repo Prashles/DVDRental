@@ -9,8 +9,12 @@ interface Model
      * data that is to be stored
      *
      * @param array $data
-     * @param array $rules
      * @return mixed
      */
     public static function validate(array $data);
+
+    /**
+     * @return string
+     */
+    public function getTable();
 }

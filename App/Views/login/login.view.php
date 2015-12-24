@@ -7,9 +7,14 @@
         <div class="col-md-6">
             <p class="lead">Use the form below to login to your account, or, <a href="">click here</a> to register.</p>
             <form action="" method="POST">
+                <?php if(session()->hasErrors()): ?>
+                    <div class="alert alert-danger">
+                        <p><?php echo session()->getErrors()->first(); ?></p>
+                    </div>
+                <?php endif; ?>
                 <div class="form-group">
                     <label for="email">E-mail Address:</label>
-                    <input type="email" name="email" class="form-control" placeholder="john.doe@example.com">
+                    <input type="email" <?php oldInput('email'); ?> name="email" class="form-control" placeholder="john.doe@example.com">
                 </div>
                 
                 <div class="form-group">

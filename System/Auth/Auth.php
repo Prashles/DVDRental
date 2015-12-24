@@ -2,12 +2,13 @@
 
 namespace System\Auth;
 
+use App\Models\User;
 use System\Model\Model;
 
 class Auth
 {
     /**
-     * @var Authenticatable, Model
+     * @var Model, Authenticatable
      */
     protected $model;
 
@@ -32,11 +33,21 @@ class Auth
      *
      * @param $username
      * @param $password
-     * @return bool
+     * @return bool|int
      */
-    public static function check($username, $password)
+    public function check($username, $password)
     {
+        $get = $this->model->query('SELECT id, password FROM ' . $this->model->getTable() .
+            ' WHERE ' . $this->model->getUsername() . ' = ?', [$username]);
 
+        // Username not found
+        if ($get->rowCount() == 0) {
+            return false;
+        }
+
+        $user = User::fetch($get);
+
+        return (password_verify($password, $user->password)) ?: (int) $user->id;
     }
 
     /**

@@ -88,7 +88,7 @@ abstract class BaseModel implements Model
      * @param PDOStatement $query
      * @return mixed
      */
-    protected static function fetch(PDOStatement $query)
+    public static function fetch(PDOStatement $query)
     {
         return $query->fetch(PDO::FETCH_OBJ);
     }
