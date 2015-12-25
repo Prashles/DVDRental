@@ -23,7 +23,7 @@
 
                     <div class="form-group">
                         <label for="name">Title:</label>
-                        <input type="text" name="title" <?php oldInput('name'); ?> class="form-control">
+                        <input type="text" name="title" <?php oldInput('title'); ?> class="form-control">
                     </div>
 
                     <div class="form-group">
@@ -53,7 +53,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="cast">Cast</label>
+                        <label for="cast">Cast:</label>
                         <textarea name="cast" class="form-control" cols="30" rows="5"><?php echo oldInput('cast', false); ?></textarea>
                     </div>
 
