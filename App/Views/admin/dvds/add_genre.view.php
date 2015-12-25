@@ -3,6 +3,7 @@
     <div class="container">
         <div class="page-header">
             <h1>Add Genre</h1>
+            <p class="lead">Add a genre to the system.</p>
         </div>
     </div>
 

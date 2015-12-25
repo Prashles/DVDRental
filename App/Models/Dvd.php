@@ -8,4 +8,8 @@ use System\Model\Model;
 class Dvd extends BaseModel implements Model
 {
     protected $table = 'dvds';
+
+    public static $rules = [
+        'required' => 'sdfsdf'
+    ];
 }

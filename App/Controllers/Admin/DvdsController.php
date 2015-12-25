@@ -3,7 +3,6 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Models\Actor;
 use App\Models\Dvd;
 use App\Models\Genre;
 use System\View\View;
@@ -20,44 +19,26 @@ class DvdsController extends BaseController
         );
     }
 
-    public function actors()
+    public function addDvd()
     {
         return $this->response->view(
-            View::create('admin.dvds.actors', [
-                'title' => 'Actors',
-                'actors' => (new Actor)->all()
+            View::create('admin.dvds.add_dvd', [
+                'title' => 'Admin DVDs',
+                'genres' => (new Genre)->all()
             ])
         );
     }
 
-    public function addActor()
-    {
-        return $this->response->view(
-            View::create('admin.dvds.add_actor', [
-                'title' => 'Add Actor'
-            ])
-        );
-    }
-
-    public function storeActor()
+    public function storeDvd()
     {
         $input = $this->request->request->all();
 
         // Validate the data
-        if (($validator = Actor::validate($input)) !== true) {
+        if (($validator = Dvd::validate($input)) !== true) {
             session()->addErrors($validator);
             session()->flashInput($input);
-            return redirect(l('admin/dvds/actor/add'));
+            return redirect(l('admin/dvd/add'));
         }
-
-        // Create the user
-        $actor = new Actor;
-        $actor->create([
-            'name' => $input['name']
-        ]);
-
-        session()->addSuccess('Actor successfully added');
-        return redirect(l('admin/dvds/actors'));
     }
 
     public function genres()

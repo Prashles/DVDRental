@@ -3,6 +3,7 @@
 <div class="container">
     <div class="page-header">
         <h1>DVDs</h1>
+        <p class="lead">DVDs currently in the system.</p>
     </div>
 </div>
 

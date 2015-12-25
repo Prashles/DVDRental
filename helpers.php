@@ -106,14 +106,19 @@ function redirect($to)
  * Helper function for old input data.
  * ONLY USEFUL FOR INPUT FIELDS WITH VALUE PARAM
  *
- * @param $key
- * @return void
+ * @param $key string
+ * @param $output bool
+ * @return void|string
  */
-function oldInput($key)
+function oldInput($key, $output = true)
 {
     $value = session()->oldInput($key);
 
     if (is_string($value)) {
-        echo "value=\"{$value}\"";
+        if ($output === false) {
+            return $value;
+        }
+
+        echo "value=\"{$value}\"";;
     }
 }
