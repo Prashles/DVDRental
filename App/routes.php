@@ -15,7 +15,7 @@ return [
     ['GET', '/logout', ['App\Controllers\User\LoginController', 'getLogout']],
 
     // Browse routes
-    ['GET', '/browse', ['App\Controllers\User\BrowseController', 'getBrowse']],
+    ['GET', '/browse', ['App\Controllers\User\BrowseController', 'index']],
 
     // Admin routes
     ['GET', '/admin/users', ['App\Controllers\Admin\UsersController', 'index']],

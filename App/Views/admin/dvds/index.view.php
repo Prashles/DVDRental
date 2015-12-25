@@ -14,6 +14,7 @@
         <div class="col-md-9">
             <table class="table table-bordered table-striped table-hover">
                 <tr>
+                    <th></th>
                     <th>Title</th>
                     <th>Director</th>
                     <th>Genre</th>
@@ -25,6 +26,7 @@
                 </tr>
                 <?php foreach ($dvds as $dvd): ?>
                     <tr>
+                        <td><a href="<?php echo upload($dvd->image); ?>" target="_blank"><img src="<?php echo upload($dvd->image); ?>" alt="DVD Image" class="img-responsive img-thumbnail"/></a></td>
                         <td><?php echo e($dvd->title); ?></td>
                         <td><?php echo e($dvd->director); ?></td>
                         <td><?php echo e($dvd->genre); ?></td>

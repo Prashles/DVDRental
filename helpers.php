@@ -49,6 +49,17 @@ function asset($asset)
 }
 
 /**
+ * Return path to an upload
+ *
+ * @param $name
+ * @return string
+ */
+function upload($name)
+{
+    return getenv('SITE_URL') . 'uploads/' . $name;
+}
+
+/**
  * Die and dump data
  *
  * @param $data mixed

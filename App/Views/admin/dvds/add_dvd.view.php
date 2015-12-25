@@ -14,7 +14,7 @@
             <div class="col-md-5">
                 <h2>Add a new DVD</h2>
 
-                <form style="padding-bottom: 30px;" action="<?php echo l('admin/dvd/store'); ?>" method="POST">
+                <form style="padding-bottom: 30px;" action="<?php echo l('admin/dvd/store'); ?>" method="POST" enctype="multipart/form-data">
                     <?php if(session()->hasErrors()): ?>
                         <div class="alert alert-danger">
                             <p><?php echo session()->getErrors()->first(); ?></p>
@@ -45,6 +45,11 @@
                     <div class="form-group">
                         <label for="year">Release Year:</label>
                         <input type="number" name="year" <?php oldInput('year'); ?> class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image">Image (max size 512kb, png and jpeg only):</label>
+                        <input type="file" name="image">
                     </div>
 
                     <div class="form-group">

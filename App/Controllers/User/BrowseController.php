@@ -6,9 +6,9 @@ use App\Controllers\BaseController;
 
 class BrowseController extends BaseController
 {
-    public function getBrowse()
+    public function index()
     {
-        echo 1;
+
     }
 
 }

@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Models\Dvd;
 use App\Models\Genre;
+use System\Message\Message;
 use System\View\View;
 
 class DvdsController extends AdminBaseController
@@ -39,6 +40,22 @@ class DvdsController extends AdminBaseController
             return redirect(l('admin/dvd/add'));
         }
 
+        // Validate the image
+        if (($imageValidator = Dvd::validateImage()) !== true) {
+            session()->addErrors($imageValidator);
+            session()->flashInput($input);
+            return redirect(l('admin/dvd/add'));
+        }
+
+        // Save file with random name
+        $image = $_FILES['image'];
+        $name = ($image['type'] == 'image/jpeg') ? uniqid('dvd_') . '.jpg' : uniqid('dvd_') . '.png';
+        if (!move_uploaded_file($_FILES['image']['tmp_name'], PUBLIC_PATH . 'uploads/' . $name)) {
+            session()->addErrors(new Message(['Image was not uploaded - please try again']));
+            session()->flashInput($input);
+            return redirect(l('admin/dvd/add'));
+        }
+
         // Insert into database
         $dvd = new Dvd;
         $dvd->create([
@@ -48,7 +65,8 @@ class DvdsController extends AdminBaseController
             'year' => $input['year'],
             'synopsis' => $input['synopsis'],
             'director' => $input['director'],
-            'cast' => $input['cast']
+            'cast' => $input['cast'],
+            'image' => $name
         ]);
 
         session()->addSuccess('Dvd successfully added');
