@@ -58,12 +58,6 @@ class LoginController extends BaseController
             'phone' => $input['phone']
         ]);
 
-        if (!is_int($id)) {
-            session()->addErrors(new Message(['Something went wrong, please try again']));
-            session()->flashInput($input);
-            return redirect(l('register'));
-        }
-
         // Log the user in
         auth()->login($id);
 

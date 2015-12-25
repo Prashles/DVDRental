@@ -19,4 +19,13 @@ return [
 
     // Admin routes
     ['GET', '/admin/users', ['App\Controllers\Admin\UsersController', 'index']],
+
+    // DVDs
+    ['GET', '/admin/dvds', ['App\Controllers\Admin\DvdsController', 'index']],
+    ['GET', '/admin/dvds/actors', ['App\Controllers\Admin\DvdsController', 'actors']],
+    ['GET', '/admin/dvds/actor/add', ['App\Controllers\Admin\DvdsController', 'addActor']],
+    ['POST', '/admin/dvds/actor/store', ['App\Controllers\Admin\DvdsController', 'storeActor']],
+    ['GET', '/admin/dvds/genres', ['App\Controllers\Admin\DvdsController', 'genres']],
+    ['GET', '/admin/dvds/genre/add', ['App\Controllers\Admin\DvdsController', 'addGenre']],
+    ['POST', '/admin/dvds/genre/store', ['App\Controllers\Admin\DvdsController', 'storeGenre']],
 ];

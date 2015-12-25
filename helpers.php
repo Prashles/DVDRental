@@ -68,7 +68,11 @@ function d($data)
  */
 function l($to)
 {
-    return $to;
+    if ($to == '/') {
+        return getenv('SITE_URL');
+    }
+
+    return getenv('SITE_URL') . $to;
 }
 
 /**

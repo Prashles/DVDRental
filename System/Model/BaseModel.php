@@ -140,4 +140,17 @@ abstract class BaseModel implements Model
         }
     }
 
+    /**
+     * @param $column string
+     * @param $value string
+     * @return bool
+     */
+    public function isUnique($column, $value)
+    {
+        $get = $this->query('SELECT id FROM ' . $this->getTable() . ' WHERE `' . $column . '` = ?',
+            [$value]);
+
+        return ($get->rowCount() === 0);
+    }
+
 }

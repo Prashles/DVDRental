@@ -5,8 +5,9 @@ namespace App\Models;
 use System\Auth\Authenticatable;
 use System\Message\Message;
 use System\Model\BaseModel;
+use System\Model\Model;
 
-class User extends BaseModel implements Authenticatable
+class User extends BaseModel implements Authenticatable, Model
 {
     /**
      * @var string Table in DB
