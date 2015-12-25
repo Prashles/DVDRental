@@ -35,7 +35,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="<?php echo l('/'); ?>">Home</a></li>
-            <li><a href="#">Browse DVDs</a></li>
+            <li><a href="<?php echo l('browse'); ?>">Browse DVDs</a></li>
             <?php if (!auth()->is()): ?>
                 <li><a href="<?php echo l('login'); ?>">Login</a></li>
                 <li><a href="<?php echo l('register'); ?>">Register</a></li>
