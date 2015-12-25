@@ -20,7 +20,7 @@ class Session extends \Symfony\Component\HttpFoundation\Session\Session
     }
 
     /**
-     * @return Messagee
+     * @return Message
      */
     public function getErrors()
     {
