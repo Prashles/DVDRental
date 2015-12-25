@@ -16,4 +16,7 @@ return [
 
     // Browse routes
     ['GET', '/browse', ['App\Controllers\User\BrowseController', 'getBrowse']],
+
+    // Admin routes
+    ['GET', '/admin/users', ['App\Controllers\Admin\UsersController', 'index']],
 ];

@@ -88,6 +88,19 @@ class Auth
     }
 
     /**
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        if (!$this->is()) {
+            return false;
+        }
+
+         return ($this->user()->level < 5 === false);
+    }
+
+
+    /**
      * @return void
      */
     public function logout()

@@ -34,11 +34,22 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li><a href="<?php echo l('/'); ?>">Home</a></li>
             <li><a href="#">Browse DVDs</a></li>
             <?php if (!auth()->is()): ?>
                 <li><a href="<?php echo l('login'); ?>">Login</a></li>
                 <li><a href="<?php echo l('register'); ?>">Register</a></li>
+            <?php endif; ?>
+
+            <?php if (auth()->isAdmin()): ?>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo l('admin/users'); ?>">Users</a></li>
+                        <li><a href="<?php echo l('admin/rentals'); ?>">Rentals</a></li>
+                        <li><a href="<?php echo l('admin/dvds'); ?>">DVDs</a></li>
+                    </ul>
+                </li>
             <?php endif; ?>
 
             <?php if (auth()->is()): ?>

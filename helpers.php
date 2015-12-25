@@ -45,7 +45,7 @@ function view($view)
  */
 function asset($asset)
 {
-    return 'assets/' . $asset;
+    return getenv('SITE_URL') . 'assets/' . $asset;
 }
 
 /**
