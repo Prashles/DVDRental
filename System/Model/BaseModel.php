@@ -153,4 +153,13 @@ abstract class BaseModel implements Model
         return ($get->rowCount() === 0);
     }
 
+    /**
+     * @param $id int
+     * @return bool
+     */
+    public function existsById($id)
+    {
+        return (bool) $this->getById($id);
+    }
+
 }

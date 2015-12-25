@@ -2,19 +2,18 @@
 
 namespace App\Controllers\Admin;
 
-use App\Controllers\BaseController;
 use App\Models\Dvd;
 use App\Models\Genre;
 use System\View\View;
 
-class DvdsController extends BaseController
+class DvdsController extends AdminBaseController
 {
     public function index()
     {
         return $this->response->view(
             View::create('admin.dvds.index', [
                 'title' => 'Admin DVDs',
-                'dvds' => (new Dvd)->all()
+                'dvds' => (new Dvd)->allWithGenre()
             ])
         );
     }
@@ -39,6 +38,21 @@ class DvdsController extends BaseController
             session()->flashInput($input);
             return redirect(l('admin/dvd/add'));
         }
+
+        // Insert into database
+        $dvd = new Dvd;
+        $dvd->create([
+            'title' => $input['title'],
+            'genre_id' => $input['genre'],
+            'price_band' => $input['price'],
+            'year' => $input['year'],
+            'synopsis' => $input['synopsis'],
+            'director' => $input['director'],
+            'cast' => $input['cast']
+        ]);
+
+        session()->addSuccess('Dvd successfully added');
+        return redirect(l('admin/dvds'));
     }
 
     public function genres()
@@ -72,8 +86,8 @@ class DvdsController extends BaseController
         }
 
         // Create the user
-        $actor = new Genre;
-        $actor->create([
+        $genre = new Genre;
+        $genre->create([
             'name' => $input['name']
         ]);
 
