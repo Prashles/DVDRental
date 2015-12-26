@@ -65,6 +65,17 @@ class Dvd extends BaseModel implements Model
     }
 
     /**
+     * @param $id int
+     * @return array
+     */
+    public function getById($id)
+    {
+        return self::fetch($this->query(
+            'SELECT dvds.*, genres.name as genre FROM dvds, genres WHERE dvds.genre_id = genres.id AND dvds.id = ?',
+            [$id]));
+    }
+
+    /**
      * @return array
      */
     public function allWithGenre()

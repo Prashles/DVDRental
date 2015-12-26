@@ -43,6 +43,17 @@ class BrowseController extends BaseController
 
     public function dvd($id)
     {
-        d($id);
+        $dvd = (new Dvd)->getById($id['id']);
+
+        if (empty($dvd)) {
+            return notfound();
+        }
+
+        return $this->response->view(
+            View::create('browse.dvd', [
+                'title' => e($dvd->title),
+                'dvd' => $dvd
+            ])
+        );
     }
 }

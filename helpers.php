@@ -142,3 +142,22 @@ function oldInput($key, $output = true)
         echo "value=\"{$value}\"";;
     }
 }
+
+function band2price($band, $formatted = false)
+{
+    $band = strtoupper($band);
+
+    $prices = [
+        'A' => 3.5,
+        'B' => 2.5,
+        'C' => 1
+    ];
+
+    if (!in_array($band, array_keys($prices))) {
+        throw new Exception('Invalid price band: ' . $band);
+    }
+
+    $price = $prices[$band];
+
+    return ($formatted) ? money_format('%i', $price) : $price;
+}
