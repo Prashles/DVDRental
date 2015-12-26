@@ -39,7 +39,7 @@ class Basket
             ];
         }
 
-        session()->set('_basket', $this->items);
+        $this->update();
     }
 
     /**
@@ -73,6 +73,11 @@ class Basket
         $this->update();
     }
 
+    /**
+     * Update the session
+     *
+     * @return void
+     */
     public function update()
     {
         session()->set('_basket', $this->items);
@@ -117,5 +122,16 @@ class Basket
         }
 
         return $out;
+    }
+
+    /**
+     * Remove all items from basket
+     *
+     * @return void
+     */
+    public function clear()
+    {
+        $this->items = [];
+        $this->update();
     }
 }

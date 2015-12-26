@@ -118,4 +118,33 @@ class Dvd extends BaseModel implements Model
 
         return $this->fetchAll($query);
     }
+
+    /**
+     * @param $dvdId
+     * @param $userId
+     * @return void
+     */
+    public function rent($dvdId, $userId)
+    {
+        // Create rental
+        (new Rental)->create([
+            'user_id' => $userId,
+            'dvd_id' => $dvdId
+        ]);
+
+        // Mark dvd as rented
+        $this->markRented($dvdId);
+    }
+
+    /**
+     * @param $id
+     * @return void
+     */
+    public function markRented($id)
+    {
+        $this->query(
+            'UPDATE ' . $this->getTable() . ' SET rented = 1 WHERE id = ? LIMIT 1', [$id]
+        );
+    }
+
 }

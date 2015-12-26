@@ -4,9 +4,12 @@ namespace App\Controllers\User;
 
 use App\Controllers\BaseController;
 use App\Models\Dvd;
+use App\Models\Rental;
+use App\Models\Transaction;
 use Stripe\Charge;
 use Stripe\Error\Card;
 use Stripe\Stripe;
+use System\Message\Message;
 use System\View\View;
 
 class BasketController extends BaseController
@@ -78,8 +81,34 @@ class BasketController extends BaseController
     public function checkout()
     {
         try {
-            // charge
+            $charge = Charge::create([
+                'amount' => basket()->sum() * 100,
+                'currency' => 'GBP',
+                'source' => $this->request->request->get('stripeToken')
+            ]);
+
+            // Insert the transaction into th DB
+            (new Transaction)->create([
+                'user_id' => auth()->user()->id,
+                'transaction_id' => $charge->id
+            ]);
+
+            // Marks the DVD(s) as rented
+            foreach (basket()->all() as $dvd) {
+                (new Dvd)->rent($dvd['id'], auth()->user()->id);
+            }
+
+            // Remove from basket
+            basket()->clear();
+
+            // Success
+            session()->addSuccess('DVDs successfully rented!');
+            return redirect(l('/'));
+
+
         } catch (Card $e) {
+            session()->addErrors(new Message(['Something went wrong with your transaction, please try again.']));
+            return redirect(l('basket'));
         }
     }
 
