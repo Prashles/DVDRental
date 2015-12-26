@@ -6,6 +6,7 @@
 use App\Models\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use System\Auth\Auth;
+use System\Basket\BasketSingleton;
 use System\Session\SessionSingleton;
 
 /**
@@ -114,6 +115,14 @@ function session()
 }
 
 /**
+ * @return \System\Basket\Basket
+ */
+function basket()
+{
+    return BasketSingleton::getInstance();
+}
+
+/**
  * @param $to string
  * @return RedirectResponse
  */
@@ -143,6 +152,12 @@ function oldInput($key, $output = true)
     }
 }
 
+/**
+ * @param $band
+ * @param bool $formatted
+ * @return string
+ * @throws Exception
+ */
 function band2price($band, $formatted = false)
 {
     $band = strtoupper($band);
