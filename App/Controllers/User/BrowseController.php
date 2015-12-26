@@ -41,4 +41,8 @@ class BrowseController extends BaseController
         );
     }
 
+    public function dvd($id)
+    {
+        d($id);
+    }
 }

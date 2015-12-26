@@ -19,24 +19,11 @@
         </div>
     <?php endif; ?>
 
-    <?php foreach ($dvds as $dvd): ?>
-        <div class="row">
-            <div class="col-md-3"><img src="<?php echo upload($dvd->image); ?>" class="img-responsive img-circle" alt="DVD Image"></div>
-
-            <div class="col-md-7 col-md-offset-1">
-                <h2><?php echo e($dvd->title) . ' - ' . e($dvd->year); ?></h2>
-                <p class="light"><?php echo e($dvd->cast); ?></p>
-                <p class="lead">
-                    <?php echo e($dvd->synopsis); ?>
-                </p>
-
-                <p class="lead">
-                    <a href="">More info &rarr;</a>
-                </p>
-            </div>
-        </div>
-        <hr>
-    <?php endforeach; ?>
+    <?php
+    foreach ($dvds as $dvd):
+        include view ('browse.dvds_list');
+    endforeach;
+    ?>
 </div>
 
 <?php include view('layout.footer'); ?>

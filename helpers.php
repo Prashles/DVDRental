@@ -20,6 +20,15 @@ function e($string)
 }
 
 /**
+ *
+ */
+function notfound()
+{
+    die('404'); //TODO: 404 page
+}
+
+
+/**
  * Helper to include sub-view in view
  *
  * @param $view

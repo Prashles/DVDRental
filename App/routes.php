@@ -18,6 +18,7 @@ return [
     ['GET', '/browse', ['App\Controllers\User\BrowseController', 'index']],
     ['GET', '/browse/search', ['App\Controllers\User\BrowseController', 'search']],
     ['POST', '/browse/search', ['App\Controllers\User\BrowseController', 'processSearch']],
+    ['GET', '/browse/dvd/{id:\d+}', ['App\Controllers\User\BrowseController', 'dvd']],
 
     // Admin routes
     ['GET', '/admin/users', ['App\Controllers\Admin\UsersController', 'index']],
