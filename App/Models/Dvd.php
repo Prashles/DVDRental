@@ -64,10 +64,47 @@ class Dvd extends BaseModel implements Model
         return true;
     }
 
+    /**
+     * @return array
+     */
     public function allWithGenre()
     {
         return self::fetchAll($this->query(
             'SELECT dvds.*, genres.name as genre FROM dvds, genres WHERE dvds.genre_id = genres.id',
             []));
+    }
+
+    /**
+     * @param array $input
+     * @return array
+     */
+    public function search(array $input)
+    {
+        // Ensure form was submitted, all values present
+        if (!isset($input['title'], $input['director'], $input['genre'])) {
+            return [];
+        }
+
+        // If all filters empty, return all DVDs
+        if (empty($input['title']) && empty($input['director']) && $input['genre'] == 'any') {
+            return $this->allWithGenre();
+        }
+
+        $queryValues = [
+            'title' => "%{$input['title']}%",
+            'director' => "%{$input['director']}%"
+        ];
+
+        $genre = '';
+
+        if ($input['genre'] !== 'any') {
+            $genre = "AND genres.id = :genre";
+            $queryValues['genre'] = $input['genre'];
+        }
+
+        $query = $this->query("SELECT dvds.*, genres.name as genre FROM dvds, genres WHERE dvds.genre_id = genres.id AND title LIKE :title {$genre} AND director LIKE :director", $queryValues);
+
+
+        return $this->fetchAll($query);
     }
 }

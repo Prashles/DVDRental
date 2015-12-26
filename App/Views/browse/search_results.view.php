@@ -2,12 +2,22 @@
 
 <div class="container">
     <div class="page-header">
-        <h1>Browse</h1>
-        <p class="lead">Here you can browse our entire selected of DVDs and, if they're available, you can add them to your basket to rent. If you'd like to search for a DVD, you can do so <a href="">here</a>.</p>
+        <h1>Search Results</h1>
+        <p class="lead">Here are your search results.</p>
+        <p><a href="<?php echo l('browse/search'); ?>">Search again &rarr;</a></p>
     </div>
 </div>
 
 <div class="container dvd-listing">
+
+    <?php if (empty($dvds)): ?>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="lead">No search results.</p>
+                <p class="lead"><a href="<?php echo l('browse/search'); ?>">Go back &rarr;</a></p>
+            </div>
+        </div>
+    <?php endif; ?>
 
     <?php foreach ($dvds as $dvd): ?>
         <div class="row">
