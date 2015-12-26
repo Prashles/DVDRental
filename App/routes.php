@@ -20,6 +20,12 @@ return [
     ['POST', '/browse/search', ['App\Controllers\User\BrowseController', 'processSearch']],
     ['GET', '/browse/dvd/{id:\d+}', ['App\Controllers\User\BrowseController', 'dvd']],
 
+    // Basket routes
+    ['GET', '/basket', ['App\Controllers\User\BasketController', 'index']],
+    ['GET', '/basket/add/{id:\d+}', ['App\Controllers\User\BasketController', 'add']],
+    ['GET', '/basket/delete/{id:\d+}', ['App\Controllers\User\BasketController', 'remove']],
+    ['POST', '/basket/checkout', ['App\Controllers\User\BasketController', 'checkout']],
+
     // Admin routes
     ['GET', '/admin/users', ['App\Controllers\Admin\UsersController', 'index']],
 

@@ -27,12 +27,16 @@
                 <p class="lead">
                     <span class="label label-success">Available</span>
                 </p>
-                <p class="lead">
-                    This DVD is available to rent for £<?php echo band2price($dvd->price_band, true); ?>
-                </p>
-                <p class="lead">
-                    <a href="#">Add to basket &rarr;</a>
-                </p>
+                <?php if (auth()->is()): ?>
+                    <p class="lead">
+                        This DVD is available to rent for £<?php echo band2price($dvd->price_band, true); ?>
+                    </p>
+                    <p class="lead">
+                        <a href="<?php echo l('basket/add/' . $dvd->id); ?>">Add to basket &rarr;</a>
+                    </p>
+                <?php else: ?>
+                    <p class="lead">Please <a href="<?php echo l('login'); ?>">login</a> or <a href="<?php echo l('register'); ?>">register</a> to rent this DVD.</p>
+                 <?php endif; ?>
             <?php endif; ?>
 
         </div>
