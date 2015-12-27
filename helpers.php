@@ -23,7 +23,9 @@ function e($string)
 }
 
 /**
+ * Helper function to throw a 404
  *
+ * @return \Symfony\Component\HttpFoundation\Response
  */
 function notfound()
 {
@@ -135,7 +137,6 @@ function redirect($to)
 
 /**
  * Helper function for old input data.
- * ONLY USEFUL FOR INPUT FIELDS WITH VALUE PARAM
  *
  * @param $key string
  * @param $output bool

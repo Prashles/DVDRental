@@ -2,7 +2,6 @@
 
 namespace System\Basket;
 
-
 class BasketSingleton
 {
     /**
