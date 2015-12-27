@@ -27,6 +27,7 @@ return [
     ['POST', '/basket/checkout', ['App\Controllers\User\BasketController', 'checkout']],
 
     // Admin routes
+    // Users
     ['GET', '/admin/users', ['App\Controllers\Admin\UsersController', 'index']],
 
     // DVDs
@@ -36,4 +37,9 @@ return [
     ['GET', '/admin/dvds/genres', ['App\Controllers\Admin\DvdsController', 'genres']],
     ['GET', '/admin/dvds/genre/add', ['App\Controllers\Admin\DvdsController', 'addGenre']],
     ['POST', '/admin/dvds/genre/store', ['App\Controllers\Admin\DvdsController', 'storeGenre']],
+
+    // Rentals
+    ['GET', '/admin/rentals/current', ['App\Controllers\Admin\RentalsController', 'current']],
+    ['GET', '/admin/rentals/returned', ['App\Controllers\Admin\RentalsController', 'returned']],
+    ['GET', '/admin/rentals/return/{id:\d+}', ['App\Controllers\Admin\RentalsController', 'returnDvd']],
 ];

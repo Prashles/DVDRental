@@ -52,7 +52,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="<?php echo l('admin/users'); ?>">Users</a></li>
-                        <li><a href="<?php echo l('admin/rentals'); ?>">Rentals</a></li>
+                        <li><a href="<?php echo l('admin/rentals/current'); ?>">Rentals</a></li>
                         <li><a href="<?php echo l('admin/dvds'); ?>">DVDs</a></li>
                     </ul>
                 </li>

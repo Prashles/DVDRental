@@ -87,6 +87,11 @@ class BasketController extends BaseController
                 'source' => $this->request->request->get('stripeToken')
             ]);
 
+            if ($charge->paid !== true) {
+                session()->addErrors(new Message(['Something went wrong with your transaction, please try again.']));
+                return redirect(l('basket'));
+            }
+
             // Insert the transaction into th DB
             (new Transaction)->create([
                 'user_id' => auth()->user()->id,
@@ -104,8 +109,6 @@ class BasketController extends BaseController
             // Success
             session()->addSuccess('DVDs successfully rented!');
             return redirect(l('/'));
-
-
         } catch (Card $e) {
             session()->addErrors(new Message(['Something went wrong with your transaction, please try again.']));
             return redirect(l('basket'));
