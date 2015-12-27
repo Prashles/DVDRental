@@ -3,10 +3,12 @@
 /*
  * A series of helper functions
  */
+use App\Controllers\ErrorsController;
 use App\Models\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use System\Auth\Auth;
 use System\Basket\BasketSingleton;
+use System\Response\Response;
 use System\Session\SessionSingleton;
 
 /**
@@ -25,7 +27,7 @@ function e($string)
  */
 function notfound()
 {
-    die('404'); //TODO: 404 page
+    return (new ErrorsController)->show404();
 }
 
 

@@ -32,6 +32,11 @@ $dotenv->load();
 $request = Request::createFromGlobals();
 
 /*
+ * Start the Symfony session
+ */
+session()->start();
+
+/*
  * Create the router
  */
 
@@ -49,16 +54,7 @@ $dispatcher = simpleDispatcher($defineRoutes);
 $routeInfo = $dispatcher->dispatch($request->getMethod(), $request->getRequestUri());
 
 // Response based on route match
-if ($routeInfo[0] == Dispatcher::NOT_FOUND) {
-    // 404
-    die('404');
-    // TODO: make status code error
-}
-elseif ($routeInfo[0] == Dispatcher::METHOD_NOT_ALLOWED) {
-    // 405
-    die('405');
-}
-elseif ($routeInfo[0] == Dispatcher::FOUND) {
+if ($routeInfo[0] == Dispatcher::FOUND) {
     // Route found, call appropriate constructor
     $className = $routeInfo[1][0];
     $method = $routeInfo[1][1];
@@ -73,8 +69,8 @@ elseif ($routeInfo[0] == Dispatcher::FOUND) {
         $controller->$method($vars);
     }
 }
-
-/*
- * Start the Symfony session
- */
-session()->start();
+else {
+    // Dispatched::NOT_FOUND or Dispatched::METHOD_NOT_ALLOWED
+    notfound();
+    exit;
+}
