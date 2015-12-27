@@ -41,6 +41,27 @@ class Rental extends BaseModel implements Model
             $this->query('UPDATE ' . $this->getTable() . ' SET returned = 1 WHERE id = ? LIMIT 1', [$rentalId]);
             $this->query('UPDATE dvds SET rented = 0 WHERE id = ? LIMIT 1', [$rental->dvd_id]);
         }
+    }
 
+    /**
+     * @param $userId
+     * @return array
+     */
+    public function userCurrent($userId)
+    {
+        return self::fetchAll($this->query(
+            'SELECT dvds.*, rentals.created_at as rented_at FROM rentals, dvds WHERE rentals.dvd_id = dvds.id AND rentals.user_id = ? AND rentals.returned = 0', [$userId]
+        ));
+    }
+
+    /**
+     * @param $userId
+     * @return array
+     */
+    public function userReturned($userId)
+    {
+        return self::fetchAll($this->query(
+            'SELECT dvds.*, rentals.created_at as rented_at FROM rentals, dvds WHERE rentals.dvd_id = dvds.id AND rentals.user_id = ? AND rentals.returned = 1', [$userId]
+        ));
     }
 }

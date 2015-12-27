@@ -42,4 +42,8 @@ return [
     ['GET', '/admin/rentals/current', ['App\Controllers\Admin\RentalsController', 'current']],
     ['GET', '/admin/rentals/returned', ['App\Controllers\Admin\RentalsController', 'returned']],
     ['GET', '/admin/rentals/return/{id:\d+}', ['App\Controllers\Admin\RentalsController', 'returnDvd']],
+
+    // Account routes
+    ['GET', '/account/rentals/current', ['App\Controllers\User\AccountController', 'currentRentals']],
+    ['GET', '/account/rentals/returned', ['App\Controllers\User\AccountController', 'returnedRentals']],
 ];

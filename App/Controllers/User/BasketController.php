@@ -4,7 +4,6 @@ namespace App\Controllers\User;
 
 use App\Controllers\BaseController;
 use App\Models\Dvd;
-use App\Models\Rental;
 use App\Models\Transaction;
 use Stripe\Charge;
 use Stripe\Error\Card;
@@ -12,18 +11,13 @@ use Stripe\Stripe;
 use System\Message\Message;
 use System\View\View;
 
-class BasketController extends BaseController
+class BasketController extends BaseAuthController
 {
     protected $stripe;
 
     public function __construct()
     {
         parent::__construct();
-
-        if (!auth()->is()) {
-            notfound();
-            exit;
-        }
 
         $this->stripe = [
             'secret_key' => getenv('STRIPE_SECRET'),
