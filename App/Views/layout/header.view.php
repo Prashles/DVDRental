@@ -59,6 +59,9 @@
             <?php endif; ?>
 
             <?php if (auth()->is()): ?>
+                <?php if (basket()->count() !=  0): ?>
+                    <li><a href="<?php echo l('basket'); ?>"><strong>Basket (<?php echo basket()->count(); ?>)</strong></a></li>
+                <?php endif; ?>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
                   <ul class="dropdown-menu">
