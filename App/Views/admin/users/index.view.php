@@ -15,6 +15,7 @@
                     <th>#</th>
                     <th>E-mail Address</th>
                     <th>Phone</th>
+                    <th>Address</th>
                     <th>Level</th>
                     <th>Registered</th>
                 </tr>
@@ -23,6 +24,7 @@
                         <td><?php echo $user->id; ?></td>
                         <td><?php echo e($user->email); ?></td>
                         <td><?php echo e($user->phone); ?></td>
+                        <td><?php echo e($user->address); ?></td>
                         <td><?php echo ($user->level < 5) ? 'User' : 'Admin'; ?></td>
                         <td><?php echo e($user->created_at); ?></td>
                     </tr>

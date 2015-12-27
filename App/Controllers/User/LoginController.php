@@ -55,7 +55,8 @@ class LoginController extends BaseController
         $id = $user->create([
             'email' => $input['email'],
             'password' => password_hash($input['password'], PASSWORD_DEFAULT),
-            'phone' => $input['phone']
+            'phone' => $input['phone'],
+            'address' => $input['address']
         ]);
 
         // Log the user in

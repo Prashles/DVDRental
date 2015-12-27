@@ -145,10 +145,10 @@ function oldInput($key, $output = true)
 
     if (is_string($value)) {
         if ($output === false) {
-            return $value;
+            return e($value);
         }
 
-        echo "value=\"{$value}\"";;
+        echo 'value="' . e($value) . '"';
     }
 }
 

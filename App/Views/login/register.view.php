@@ -35,6 +35,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="address">Address:</label>
+                    <textarea name="address" class="form-control" cols="30" rows="4"><?php echo oldInput('address', false); ?></textarea>
+                </div>
+
+                <div class="form-group">
                     <button class="btn btn-default padding-medium" type="submit">Register</button>
                 </div>
             </form>

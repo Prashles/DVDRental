@@ -23,7 +23,7 @@ class User extends BaseModel implements Authenticatable, Model
      * @var array Validation rules
      */
     public static $rules = [
-        'required' => [['email'], ['password'], ['phone']],
+        'required' => [['email'], ['password'], ['phone'], ['address']],
         'email' => 'email',
         'lengthMin' => [['password', 5]],
         'numeric' => 'phone',
