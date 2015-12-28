@@ -8,12 +8,22 @@ use System\Model\Model;
 
 class Genre extends BaseModel implements Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'genres';
 
+    /**
+     * @var array
+     */
     public static $rules = [
         'required' => 'name'
     ];
 
+    /**
+     * @param array $data
+     * @return Message|bool
+     */
     public static function validate(array $data)
     {
         $validate = parent::validate($data);

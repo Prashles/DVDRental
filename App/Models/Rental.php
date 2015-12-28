@@ -7,6 +7,9 @@ use System\Model\Model;
 
 class Rental extends BaseModel implements Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'rentals';
 
     /**

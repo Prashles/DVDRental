@@ -125,7 +125,7 @@ abstract class BaseModel implements Model
      * Run validation against $this->rules
      *
      * @param array $data
-     * @return mixed
+     * @return Message|bool
      */
     public static function validate(array $data)
     {

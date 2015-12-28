@@ -57,5 +57,4 @@ class User extends BaseModel implements Authenticatable, Model
     {
         return $this->username;
     }
-
 }

@@ -8,8 +8,14 @@ use System\Model\Model;
 
 class Dvd extends BaseModel implements Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'dvds';
 
+    /**
+     * @var array
+     */
     public static $rules = [
         'required' => [['title'], ['genre'], ['director'], ['year'], ['synopsis'], ['cast'], ['price']],
         'integer' => [['genre'], ['year']],
@@ -18,6 +24,10 @@ class Dvd extends BaseModel implements Model
         'in' => [['price', ['A', 'B', 'C']]]
     ];
 
+    /**
+     * @param array $data
+     * @return Message|bool
+     */
     public static function validate(array $data)
     {
         if (($validate = parent::validate($data)) !== true) {
@@ -145,5 +155,4 @@ class Dvd extends BaseModel implements Model
             'UPDATE ' . $this->getTable() . ' SET rented = 1 WHERE id = ? LIMIT 1', [$id]
         );
     }
-
 }
