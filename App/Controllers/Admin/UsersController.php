@@ -6,7 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\User;
 use System\View\View;
 
-class UsersController extends BaseController
+class UsersController extends AdminBaseController
 {
     public function index()
     {

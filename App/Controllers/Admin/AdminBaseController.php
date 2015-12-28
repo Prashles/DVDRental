@@ -4,7 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 
-class AdminBaseController extends BaseController
+abstract class AdminBaseController extends BaseController
 {
     public function __construct()
     {
