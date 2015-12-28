@@ -8,8 +8,8 @@ use App\Models\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use System\Auth\Auth;
 use System\Basket\BasketSingleton;
-use System\Response\Response;
 use System\Session\SessionSingleton;
+use System\View\View;
 
 /**
  * Return an escaped string for output
@@ -42,7 +42,7 @@ function notfound()
  */
 function view($view)
 {
-    $path = \System\View\View::path($view);
+    $path = View::path($view);
 
     if (!file_exists($path)) {
         throw new Exception('View: ' . $view . ' does not exist');
