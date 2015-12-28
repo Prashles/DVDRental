@@ -32,7 +32,7 @@
                             <?php
                             $oldGenre = oldInput('genre', false);
                             foreach ($genres as $genre): ?>
-                                <option <?php if ($oldGenre == $genre->id) echo 'selected="selected"'; ?> value="<?php echo $genre->id; ?>"><?php echo $genre->name; ?></option>
+                                <option <?php if ($oldGenre == $genre->id) echo 'selected="selected"'; ?> value="<?php echo $genre->id; ?>"><?php echo e($genre->name); ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

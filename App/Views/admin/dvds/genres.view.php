@@ -22,7 +22,7 @@
                     <?php foreach ($genres as $genre): ?>
                         <tr>
                             <td><?php echo $genre->id; ?></td>
-                            <td><?php echo $genre->name; ?></td>
+                            <td><?php echo e($genre->name); ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>

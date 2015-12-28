@@ -27,7 +27,7 @@
                     <select name="genre" class="form-control">
                         <option value="any">Any</option>
                         <?php foreach ($genres as $genre): ?>
-                            <option value="<?php echo $genre->id; ?>"><?php echo $genre->name; ?></option>
+                            <option value="<?php echo $genre->id; ?>"><?php echo e($genre->name); ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
