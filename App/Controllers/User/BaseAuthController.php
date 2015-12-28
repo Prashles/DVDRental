@@ -4,9 +4,8 @@ namespace App\Controllers\User;
 
 use App\Controllers\BaseController;
 
-class BaseAuthController extends BaseController
+abstract class BaseAuthController extends BaseController
 {
-
     public function __construct()
     {
         parent::__construct();
