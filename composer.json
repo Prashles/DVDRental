@@ -23,7 +23,7 @@
       "System\\" : "System/"
     },
     "files": [
-      "helpers.php"
+      "System/helpers.php"
     ]
   }
 }
