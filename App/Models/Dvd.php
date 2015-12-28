@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use System\Message\Message;
 use System\Model\BaseModel;
 use System\Model\Model;
