@@ -47,7 +47,7 @@ class Auth
 
         $user = User::fetch($get);
 
-        return (password_verify($password, $user->password)) ?: (int) $user->id;
+        return (!password_verify($password, $user->password)) ?: (int) $user->id;
     }
 
     /**

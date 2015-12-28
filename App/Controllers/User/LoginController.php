@@ -21,7 +21,7 @@ class LoginController extends BaseController
         $input = $this->request->request->all();
 
         // Check login
-        if (!($id = auth()->check($input['email'], $input['password']))) {
+        if (($id = auth()->check($input['email'], $input['password'])) === false) {
             session()->flashInput($input);
             session()->addErrors(new Message(['Invalid username/password combination']));
             return redirect(l('login'));
