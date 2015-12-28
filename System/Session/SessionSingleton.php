@@ -5,7 +5,7 @@ namespace System\Session;
 /**
  * Aim is to turn this into a singleton
  * Kinda "hacky", but a decent way of working for
- * simples MVC
+ * simple MVC
  */
 
 class SessionSingleton
